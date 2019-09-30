@@ -1,6 +1,6 @@
 from yfRef import yfRef
 import numpy as np
-from VarSwap import VarSwap
+from VarSwap import VarSwap, ForwardVS
 import datetime as dt
 
 class VarBacktester:
@@ -50,3 +50,45 @@ class VarBacktester:
         self.myRef.getVol('^VIX',voldate=self.start)
 
         return (self.realized, self.fairStrike)
+
+    def btVSFoward(self,fwdStart):
+        '''
+        Compute dynamics of holding a forward variance swap until maturity
+        :param fwdStart (string): Start date of Variance swap
+        :return: near/far variance and valuation in a tuple
+        Only computes up to forward start date
+        '''
+        #Check fwdStart is less than maturity
+        dtend = dt.datetime.strptime(self.end, '%Y-%m-%d')
+        dtfwd = dt.datetime.strptime(fwdStart, '%Y-%m-%d')
+        if (dtend - dtfwd).days < 0:
+            raise ValueError("VarSwap matures on " + self.end\
+                             + " but starts on " + fwdStart)
+
+        days = list(self.myRef.setSpotHist(self.start, fwdStart)[1:].index) #get trading days
+        dura = len(days) #Time until start date
+        near = {}
+        far = {}
+        Kt = {}
+        remainSt = (days[-1] - days[0]).days + 1  # Remaining days until VS begins
+        remainEd = (dt.datetime.strptime(self.end, '%Y-%m-%d') - days[0]).days + 1  # Remaining days until maturity
+        k0 = ForwardVS(1,self.myRef,mat=remainEd,fwdMat=remainSt).getStrikeInterp()[2]
+        for i, day in zip(range(1, dura + 1), days):  # Loop through each day
+            self.myRef.getVol('^VIX', voldate=day.strftime("%Y-%m-%d"))
+            remainSt = (days[-1] - day).days  # Remaining days until VS begins
+            remainEd = (dt.datetime.strptime(self.end, '%Y-%m-%d') - day).days  # Remaining days until VS expires
+            near[day], far[day], Kt[day]\
+                = ForwardVS(1,self.myRef,mat=remainEd,fwdMat=remainSt).getStrikeInterp()
+
+        self.valuation = {k:Kt[k]-k0 for k in Kt} #Adjust for fair strike
+
+        # Reset ref data
+        self.myRef.getVol('^VIX', voldate=self.start)
+
+        return (near, far, self.valuation)
+
+    def btShortVarRoll(self):
+        '''
+        Computes the dynamics of a strategy that repeatedly rolls short variance swaps
+        :return: ????????????
+        '''

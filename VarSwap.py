@@ -50,13 +50,15 @@ class VarSwap:
         self.strike2 = 2*np.exp(self.rate*expiry/360)/(expiry/360)*self.strike2
         return self.strike2
 
-    def getStrikeInterp(self):
+    def getStrikeInterp(self,custExp=-1):
         '''
         Gets the strike and interpolates of maturity does not exist
         :return: The fair value varinace
         '''
+        expy = self.mat if custExp == -1 else custExp #Default value for custom experation
+
         #Base case, no interpolation needed
-        if self.mat in termStru: return self.getStrike()
+        if expy in termStru: return self.getStrike(expiry=expy)
 
 
         termSize = len(termStru)
@@ -64,12 +66,12 @@ class VarSwap:
         #Find nearest terms
         neighbors = (0,0)
         for i in range(1,termSize):
-            if self.mat < termStru[i]:
+            if expy < termStru[i]:
                 neighbors = (termStru[i-1],termStru[i])
                 break
 
         long = self.getStrike(expiry=neighbors[1])
-        if self.mat < termStru[0]: #If really short dated, set fair strike to ATM IV
+        if expy < termStru[0]: #If really short dated, set fair strike to ATM IV
             temp = self.refSV.getVol('^VIX')[termStru[0]][round(self.refSV.getSpot())]
             short = temp*temp
         else:
@@ -77,8 +79,8 @@ class VarSwap:
 
 
         #Return an interpolation between long and short points
-        self.strike2 = short*(neighbors[1]-self.mat)/(neighbors[1]-neighbors[0])\
-            + long*(self.mat-neighbors[0])/(neighbors[1]-neighbors[0])
+        self.strike2 = short*(neighbors[1]-expy)/(neighbors[1]-neighbors[0])\
+            + long*(expy-neighbors[0])/(neighbors[1]-neighbors[0])
         return self.strike2
 
     def basePNL(self,realized,fair):
@@ -101,6 +103,34 @@ class VarSwap:
         return self.basePNL(volRng,self.strike2)
 
 
+class ForwardVS(VarSwap):
+    '''
+    Foward variance swap. Subclass of VarSwap
+    '''
+    def __init__(self,vega,refSV,mat=30,rate=0.02,div=0.02,fwdMat=20):
+        '''
+        :param vega: Amount of vega notional
+        :param refSV: reference data for spot and vol
+        :param mat: maturity in days
+        :param rate: annual interest rate
+        :param div: annual dividend rate
+        :param fwdMat: number of days until VS begins
+        '''
+        super().__init__(vega,refSV,mat=mat,rate=rate,div=div)
+        self.fwdMat = fwdMat
+
+    def getStrikeInterp(self,custExp=-1):
+        '''
+        :param custExp: Custom maturity
+        :return: the fair squared strike for the FwdVarSwap and near/far values
+        tuple ~ (near,far,fwdStrike)
+        '''
+        expy = self.mat if custExp == -1 else custExp  # Default value for custom experation
+
+        near = super().getStrikeInterp(custExp=self.fwdMat)
+        far = super().getStrikeInterp(custExp=self.mat)
+        fairK = 1 / (expy - self.fwdMat) * (expy * far - self.fwdMat * near) * 10000
+        return (near,far,fairK)
 
 
 

@@ -2,6 +2,7 @@ import yfinance as yf
 from statics import termStru
 import numpy as np
 import pandas as pd
+import datetime as dt
 
 class yfRef:
     '''
@@ -120,3 +121,27 @@ class yfRef:
         '''
         return self.vol if len(self.vol) > 0 and (voldate == '')\
             else self.setVolIdx(volidx,scale,voldate)
+
+    def computeRMS(self,vals):
+        '''
+        :param vals: return values
+        :return: return annualized root mean squared volatility
+        '''
+        temp = 252*sum(x*x for x in vals)/len(vals)
+        return np.sqrt(temp)
+
+    def getRealized(self,start,end,window=30):
+        '''
+        Compute realized volatility over a window
+        :param start: first date to compute volatility
+        :param end: last date to compute volatility
+        :param window: number of days considered
+        :return: Series of realized volatility values
+        '''
+        startdt = dt.datetime.strptime(start,'%Y-%m-%d')
+        beginHist = (startdt - dt.timedelta(window*2)).strftime('%Y-%m-%d')
+        mySpots = self.setSpotHist(start=beginHist,end=end).pct_change()
+        startidx = int(np.where(mySpots.index==startdt)[0]) #Index of first value to compute
+        newDates = mySpots[startidx:].index
+        stdVals = [self.computeRMS(mySpots[(i-window+1):i+1]) for i in range(startidx,len(mySpots))]
+        return pd.Series(stdVals,newDates)
