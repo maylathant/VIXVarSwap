@@ -1,6 +1,5 @@
 import numpy as np
 import scipy.stats as sp
-
 '''
 File containing all utility functions
 '''

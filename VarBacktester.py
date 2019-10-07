@@ -25,7 +25,7 @@ class VarBacktester:
         Execute baseline backtesting
         :return: realized variance for each day
         '''
-        retHist = self.myRef.getSpotHist(self.start,self.end).pct_change()[1:]
+        retHist = self.myRef.setSpotHist(self.start,self.end).pct_change()[1:]
         days = list(retHist.index)
         retHist = np.array(retHist)
         dura = len(days)
@@ -87,8 +87,35 @@ class VarBacktester:
 
         return (near, far, self.valuation)
 
-    def btShortVarRoll(self):
+    def btShortVarRoll(self,vsTerm=30):
         '''
         Computes the dynamics of a strategy that repeatedly rolls short variance swaps
-        :return: ????????????
+        :param vsTerm: (int) Number of days in rolling variance swap
+        :return: tuple of (realized, fairstrike, valuation)
         '''
+
+        retHist = self.myRef.setSpotHist(self.start, self.end).pct_change()[1:]
+        days = list(retHist.index)
+        retHist = np.array(retHist)
+        dura = len(days)
+        self.realized = {}; self.fairStrike = {}; self.valuation = {}
+        strikeLast = VarSwap(1, self.myRef, mat=vsTerm).getStrikeInterp()
+        beginIdx = 0; cummu = 0 #cummulative amount from previous varswaps
+        for i, day in zip(range(1, dura + 1), days):  # Loop through each day
+            if i%vsTerm == 0:
+                beginIdx = vsTerm + beginIdx #Increment index for realized computation
+                strikeLast = VarSwap(1, self.myRef, mat=vsTerm).getStrikeInterp() #Restrike new swap
+                cummu = cummu + self.valuation[days[days.index(day)-1]] #Add on pnl from last variance swap
+            self.realized[day] = np.nan_to_num(np.var(retHist[beginIdx:i]) * 252)
+            self.myRef.setSpot(spotDate=day.strftime("%Y-%m-%d"))
+            self.myRef.getVol('^VIX', voldate=day.strftime("%Y-%m-%d"))
+            remain = vsTerm - i%vsTerm  # Remaining days
+            self.fairStrike[day] = VarSwap(1, self.myRef, mat=remain).getStrikeInterp()
+            self.valuation[day] = -1 / self.duration * ((self.duration - remain) * (self.realized[day] - strikeLast) \
+                                + remain * (self.fairStrike[day] - strikeLast)) * 10000 + cummu
+
+        # Reset ref data
+        self.myRef.setSpot()
+        self.myRef.getVol('^VIX', voldate=self.start)
+
+        return (self.realized, self.fairStrike, self.valuation)
