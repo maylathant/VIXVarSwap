@@ -3,6 +3,7 @@ from statics import termStru
 import numpy as np
 import pandas as pd
 import datetime as dt
+from pandas.tseries.offsets import BDay
 
 class yfRef:
     '''
@@ -130,6 +131,15 @@ class yfRef:
         temp = 252*sum(x*x for x in vals)/len(vals)
         return np.sqrt(temp)
 
+    def computeMSE(self,vals):
+        '''
+        :param vals: return values
+        :return: return annualized root mean squared volatility
+        '''
+        mu = np.mean(vals)
+        temp = 252*sum((x-mu)*(x-mu) for x in vals)/len(vals)
+        return np.sqrt(temp)
+
     def getRealized(self,start,end,window=30):
         '''
         Compute realized volatility over a window
@@ -139,9 +149,27 @@ class yfRef:
         :return: Series of realized volatility values
         '''
         startdt = dt.datetime.strptime(start,'%Y-%m-%d')
-        beginHist = (startdt - dt.timedelta(window*2)).strftime('%Y-%m-%d')
+        beginHist = (startdt - BDay()*(window*2)).strftime('%Y-%m-%d')
         mySpots = self.setSpotHist(start=beginHist,end=end).pct_change()
         startidx = int(np.where(mySpots.index==startdt)[0]) #Index of first value to compute
         newDates = mySpots[startidx:].index
         stdVals = [self.computeRMS(mySpots[(i-window+1):i+1]) for i in range(startidx,len(mySpots))]
         return pd.Series(stdVals,newDates)
+
+    def getRealizedVV(self,start,end,windowvol=30,windowvv=30):
+        '''
+        Obtain the empirical vol of vol (standard deviation of volatilities, not
+        standard deviation in changes on volatility
+        :param start: first date to compute volatility
+        :param end: last date to compute volatility
+        :param window: number of days considered
+        :return: Series of realized volatility of volatility
+        '''
+        startdt = dt.datetime.strptime(start, '%Y-%m-%d')
+        beginHist = (startdt - BDay()*(windowvv * 2)).strftime('%Y-%m-%d')
+        myvols = self.getRealized(start=beginHist,end=end,window=windowvol)
+        startidx = int(np.where(myvols.index == startdt)[0])  # Index of first value to compute
+        newDates = myvols[startidx:].index
+        stdVals = [self.computeMSE(myvols[(i - windowvv + 1):i + 1])*np.sqrt(1/windowvol)\
+                   for i in range(startidx, len(myvols))]
+        return pd.Series(stdVals, newDates)
