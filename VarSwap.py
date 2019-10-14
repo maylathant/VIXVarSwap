@@ -37,12 +37,14 @@ class VarSwap:
         if expiry == -1: expiry = self.mat
         myskew = self.refSV.getVol('^VIX')[expiry]
         myspot = self.refSV.getSpot()
-        spacing = self.refSV.strikedist
+        spacing = 0; lastK = 0
 
         self.strike2 = 0
         for sk in myskew.keys():
             optionP = self.quickCall(sk,myskew[sk],expiry/360) if sk > myspot\
                 else self.quickPut(sk,myskew[sk],expiry/360)
+            spacing = sk - lastK
+            lastK = sk
             self.strike2 = self.strike2 +\
                 optionP/(sk*sk)*spacing
 
@@ -101,6 +103,16 @@ class VarSwap:
             self.getStrikeInterp()
 
         return self.basePNL(volRng,self.strike2)
+
+    def getStrikeDer(self,vol,b=1,mat=-1):
+        '''
+        Get fair strike price with derman's approximation
+        :param vol: Current implied volatility
+        :param b: Slope of skew
+        :return: fair variance strike
+        '''
+        mat = self.mat if mat < 0 else mat
+        return vol*vol*(1 + 3*mat/360*b*b)
 
 
 class ForwardVS(VarSwap):

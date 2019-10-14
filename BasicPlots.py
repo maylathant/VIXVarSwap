@@ -76,10 +76,11 @@ def volSpotCorr(startDate = '2018-10-03',endDate = '2019-10-08',myTic = '^GSPC',
     pyplot.xlabel('S&P 500 Spot')
     pyplot.ylabel(str(window) + 'd Realized S&P 500 Vol')
     pyplot.legend()
+    pyplot.savefig('Artifacts\spotVol.pdf')
     pyplot.show()
 
 
 
-volVolRealized()
+volSpotCorr()
 
 

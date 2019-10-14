@@ -46,3 +46,6 @@ def BSCallDig(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1)
 	d1 = getd1(spot, strike, div, rate, vol, time)
 	d2 = d1 - vol*np.sqrt(time)
 	return np.exp(-rate*time)*sp.norm.cdf(d2)
+
+
+
