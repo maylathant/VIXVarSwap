@@ -38,11 +38,10 @@ def plotVSOptionPayoff():
     ##################################################
     ####### Plot VarSwap PNL Against Option ##########
     ##################################################
-    pyplot.plot(volgrid,pnlRng/1000000,color='k',label='Variance Swap PNL')
-    pyplot.plot(volgrid,pnlOp,color=mcolors.CSS4_COLORS['maroon'], label='Vanilla Call PNL')
-    pyplot.plot(volgrid,volswp,color=mcolors.CSS4_COLORS['indianred'],label='Volatility Swap PNL')
+    pyplot.plot(volgrid,pnlRng/1000000,color='k',label='Variance Swap Payoff')
+    pyplot.plot(volgrid,pnlOp,color=mcolors.CSS4_COLORS['maroon'], label='Vanilla Call Value')
+    pyplot.plot(volgrid,volswp,color=mcolors.CSS4_COLORS['indianred'],label='Volatility Swap Payoff')
     pyplot.scatter(volstrike,0,color='r',label='Variance Swap Strike')
-    pyplot.title('PnL Profile of a Variance Swap (MEUR)')
     pyplot.xlabel('Volatility')
     pyplot.ylabel('PnL (MEUR)')
     pyplot.legend()

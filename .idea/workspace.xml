@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8ec8e6c8-59a9-4099-9e0e-7cb6d5b8c5c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/BasicPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/BasicPlots.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VarSwap.py" beforeDir="false" afterPath="$PROJECT_DIR$/VarSwap.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BasicPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="42" column="67" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+            <state relative-caret-position="163">
+              <caret line="43" column="70" selection-start-line="43" selection-start-column="70" selection-end-line="43" selection-end-column="70" />
               <folding>
                 <element signature="e#60#87#0" expanded="true" />
               </folding>
@@ -155,7 +154,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="363" />
+    <option name="x" value="211" />
     <option name="y" value="23" />
     <option name="width" value="1235" />
     <option name="height" value="737" />
@@ -322,7 +321,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="149" y="23" width="1235" height="737" extended-state="0" />
+    <frame x="93" y="23" width="1235" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -552,8 +551,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BasicPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="42" column="67" selection-start-line="42" selection-start-column="67" selection-end-line="42" selection-end-column="67" />
+        <state relative-caret-position="163">
+          <caret line="43" column="70" selection-start-line="43" selection-start-column="70" selection-end-line="43" selection-end-column="70" />
           <folding>
             <element signature="e#60#87#0" expanded="true" />
           </folding>
