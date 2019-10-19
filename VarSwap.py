@@ -91,18 +91,18 @@ class VarSwap:
         :param fair: fair strike at inception
         :return: pnl
         '''
-        return 0.5*self.vega/fair*(realized*realized-fair)*100
+        return 0.5*self.vega/np.sqrt(fair)*(realized*realized-fair)
 
     def pnlSpan(self, volRng):
         '''
         Return posible pnl values at maturity for a range of realized vol
-        :param volRng (np.list float): range of possible volatilities
+        :param volRng (np.list float): range of possible volatilities in percent
         :return: pnl values
         '''
         if self.strike2 < 0: #Compute strike if not already done
             self.getStrikeInterp()
 
-        return self.basePNL(volRng,self.strike2)
+        return self.basePNL(volRng*100,self.strike2*10000)
 
     def getStrikeDer(self,vol,b=1,mat=-1):
         '''

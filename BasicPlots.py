@@ -27,23 +27,26 @@ def plotVSOptionPayoff():
 
     #Create varswap to check payoff grid
     volgrid = np.linspace(0.00001,0.4,200)
+    volswp = np.linspace(0,40,200)*0.513 -volstrike*vegaNot/10000
     mySwap = VarSwap(vegaNot,myRef)
     mySwap.strike2 =volstrike*volstrike
     pnlRng = mySwap.pnlSpan(volgrid)
 
     #Get PNL range for option with similar parameters
-    pnlOp = np.nan_to_num(utils.BSPut(vol=volgrid)*6)
+    pnlOp = np.nan_to_num(utils.BSPut(vol=volgrid)*1.5)
 
     ##################################################
     ####### Plot VarSwap PNL Against Option ##########
     ##################################################
     pyplot.plot(volgrid,pnlRng/1000000,color='k',label='Variance Swap PNL')
     pyplot.plot(volgrid,pnlOp,color=mcolors.CSS4_COLORS['maroon'], label='Vanilla Call PNL')
+    pyplot.plot(volgrid,volswp,color=mcolors.CSS4_COLORS['indianred'],label='Volatility Swap PNL')
     pyplot.scatter(volstrike,0,color='r',label='Variance Swap Strike')
     pyplot.title('PnL Profile of a Variance Swap (MEUR)')
     pyplot.xlabel('Volatility')
     pyplot.ylabel('PnL (MEUR)')
     pyplot.legend()
+    pyplot.savefig('vsopPNL.pdf')
     pyplot.show()
 
 
@@ -81,6 +84,6 @@ def volSpotCorr(startDate = '2018-10-03',endDate = '2019-10-08',myTic = '^GSPC',
 
 
 
-volSpotCorr()
+plotVSOptionPayoff()
 
 
