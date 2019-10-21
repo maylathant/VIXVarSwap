@@ -48,4 +48,28 @@ def BSCallDig(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1)
 	return np.exp(-rate*time)*sp.norm.cdf(d2)
 
 
+def bsGamma(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1):
+	'''
+	:param spot: Spot price of underlying
+	:param strike: strike price of option
+	:param div: dividend rate of underlying
+	:param rate: risk free rate in years
+	:param vol: volatility of underlying in years
+	:param time: time to maturity in years
+	:return: The gamma of the underlying
+	'''
+	d1 = getd1(spot, strike, div, rate, vol, time)
+	return np.exp(-div*time)*sp.norm.pdf(d1)/(spot*vol*np.sqrt(time))
 
+def bsDolGam(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1):
+	'''
+	:param spot: Spot price of underlying
+	:param strike: strike price of option
+	:param div: dividend rate of underlying
+	:param rate: risk free rate in years
+	:param vol: volatility of underlying in years
+	:param time: time to maturity in years
+	:return: The dollar gamma of the underlying
+	'''
+	rawGam = bsGamma(spot, strike, div, rate, vol, time)
+	return rawGam*spot*spot/100
