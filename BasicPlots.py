@@ -110,4 +110,25 @@ def plotRealAuto():
     pyplot.scatter(sqret[:-1],sqret[1:])
     pyplot.show()
 
+def plotVixAuto():
+    '''
+    Plot scatterplot of historical VIX and its one day lag
+    '''
+    startDate = '2018-10-19'
+    endDate = '2019-10-21'
+    myTic = '^GSPC'
+    winvol = 22
+    myRef = yfRef(mydate=startDate, undl=myTic)
+    myVix = myRef.getVolHist(startDate,endDate)
+    pyplot.scatter(myVix[:-1],myVix[1:],color=['r','k'])
+    z = np.polyfit(myVix[:-1],myVix[1:],1)
+    p = np.poly1d(z)
+    pyplot.plot(myVix[:-1],p(myVix[:-1]),color='k' ,label='Trend, R^2 = ' + str(round(r2_score(myVix[:-1],p(myVix[:-1])),4)))
+    pyplot.xlabel('VIX 1d Lag')
+    pyplot.ylabel('VIX')
+    pyplot.legend()
+    pyplot.savefig('autoCorVix.pdf')
+    pyplot.show()
+
 plotMeanRev()
+plotVixAuto()
