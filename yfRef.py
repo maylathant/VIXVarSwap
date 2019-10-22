@@ -64,6 +64,16 @@ class yfRef:
             self.spotHist = yf.download([self.undl],start=start,end=end)['Close']
         return self.spotHist
 
+    def getSqRet(self,start,end):
+        '''
+        Obtain squared returns of member underlying name from start to end date
+        :return: array of squared returns
+        '''
+        startdt = dt.datetime.strptime(start,'%Y-%m-%d')
+        beginHist = (startdt - BDay()*1).strftime('%Y-%m-%d')
+        mySpots = self.setSpotHist(start=beginHist,end=end).pct_change()
+        return mySpots[1:].pow(2)
+
     def setVolHist(self,start,end,name='^VIX'):
         '''
         Get history of daily spot prices and set to self variable

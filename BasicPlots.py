@@ -9,6 +9,7 @@ import utils
 import matplotlib.pyplot as pyplot
 from matplotlib import colors as mcolors
 from sklearn.metrics import r2_score
+from scipy.stats import pearsonr
 
 def plotVSOptionPayoff():
     '''
@@ -83,6 +84,30 @@ def volSpotCorr(startDate = '2018-10-03',endDate = '2019-10-08',myTic = '^GSPC',
 
 
 
-plotVSOptionPayoff()
+def plotMeanRev(startDate = '2018-10-19',endDate = '2019-10-21',myTic = '^GSPC',winvol = 22):
+    '''
+    Plot historical realized against the average
+    '''
+    myRef = yfRef(mydate=startDate,undl=myTic)
+    volR = myRef.getRealized(startDate,endDate,winvol)
+    pyplot.plot(volR.index, volR, color='r', label=str(winvol) + 'd Realized Vol SP500')
+    pyplot.plot(volR.index, np.ones(len(volR))*np.mean(volR), color='k', label='Average')
+    pyplot.savefig('meanRev.pdf')
+    pyplot.legend()
+    pyplot.show()
 
 
+def plotRealAuto():
+    '''
+    Plot scatterplot of historical volatility and its one day lag
+    '''
+    startDate = '2018-10-19'
+    endDate = '2019-10-21'
+    myTic = '^GSPC'
+    winvol = 22
+    myRef = yfRef(mydate=startDate, undl=myTic)
+    sqret = myRef.getSqRet(startDate,endDate)
+    pyplot.scatter(sqret[:-1],sqret[1:])
+    pyplot.show()
+
+plotMeanRev()
