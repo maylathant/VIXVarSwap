@@ -92,8 +92,8 @@ def plotMeanRev(startDate = '2018-10-19',endDate = '2019-10-21',myTic = '^GSPC',
     volR = myRef.getRealized(startDate,endDate,winvol)
     pyplot.plot(volR.index, volR, color='r', label=str(winvol) + 'd Realized Vol SP500')
     pyplot.plot(volR.index, np.ones(len(volR))*np.mean(volR), color='k', label='Average')
-    pyplot.savefig('meanRev.pdf')
     pyplot.legend()
+    pyplot.savefig('meanRev.pdf')
     pyplot.show()
 
 
