@@ -117,7 +117,6 @@ def plotVixAuto():
     startDate = '2018-10-19'
     endDate = '2019-10-21'
     myTic = '^GSPC'
-    winvol = 22
     myRef = yfRef(mydate=startDate, undl=myTic)
     myVix = myRef.getVolHist(startDate,endDate)
     pyplot.scatter(myVix[:-1],myVix[1:],color=['r','k'])
@@ -130,5 +129,22 @@ def plotVixAuto():
     pyplot.savefig('autoCorVix.pdf')
     pyplot.show()
 
-plotMeanRev()
-plotVixAuto()
+def pltVIXvsHist():
+    '''
+    Plot vix index and historical vol for a long period
+    :return:
+    '''
+    startDate = '2006-10-19'
+    endDate = '2019-10-21'
+    myTic = '^GSPC'
+    winvol = 30
+    myRef = yfRef(mydate=startDate, undl=myTic)
+    myVIX = myRef.getVolHist(startDate,endDate)
+    myHist = myRef.getRealized(startDate,endDate,winvol)
+    pyplot.plot(myVIX.index,myVIX,color='r',label='VIX Index')
+    pyplot.plot(myHist.index,myHist*100,color='k',label=str(winvol) + ' day Realized Vol')
+    pyplot.legend()
+    pyplot.savefig('vixHist.pdf')
+    pyplot.show()
+
+pltVIXvsHist()
