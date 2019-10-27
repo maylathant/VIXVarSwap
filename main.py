@@ -30,20 +30,20 @@ with open(r'cache/myBT','rb') as input: myBT = pickle.load(input)
 
 
 
-#Plot performance of rolling short variance swaps
-refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
-myrealized = myBT.myRef.getRealized(start=startDate,end=mydate,window=30)
-realized, fair, value = myBT.btShortVarRoll()
-fig , ax1 = pyplot.subplots()
-ax2 = ax1.twinx()
-#ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
-ax1.plot(refVix[1:].index,myrealized[1:]*100,color=mcolors.CSS4_COLORS['maroon'],label='1M Realized')
-ax2.plot(refVix[1:].index,value.values(),color='k',label=' Rolled Short VS PNL')
-ax1.legend(loc='lower left')
-ax2.legend(loc='upper left')
-pyplot.title('Performance of Rolling Short Variance Swap (MEUR)')
-fig.autofmt_xdate()
-pyplot.show()
+# #Plot performance of rolling short variance swaps
+# refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
+# myrealized = myBT.myRef.getRealized(start=startDate,end=mydate,window=30)
+# realized, fair, value = myBT.btShortVarRoll()
+# fig , ax1 = pyplot.subplots()
+# ax2 = ax1.twinx()
+# #ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
+# ax1.plot(refVix[1:].index,myrealized[1:]*100,color=mcolors.CSS4_COLORS['maroon'],label='1M Realized')
+# ax2.plot(refVix[1:].index,value.values(),color='k',label=' Rolled Short VS PNL')
+# ax1.legend(loc='lower left')
+# ax2.legend(loc='upper left')
+# pyplot.title('Performance of Rolling Short Variance Swap (MEUR)')
+# fig.autofmt_xdate()
+# pyplot.show()
 
 # Plot performance of forward variance swap
 
@@ -63,21 +63,21 @@ pyplot.show()
 # pyplot.show()
 
 
-# #Plot performance of holding 3M variance
-# realized, fairStrike = myBT.runBacktest()
-# cumPNL = [x*vegaNot/1000000 for x in myBT.valuation.values()]
-#
-# refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
+#Plot performance of holding 3M variance
+realized, fairStrike = myBT.runBacktest()
+cumPNL = [x*vegaNot/1000000 for x in myBT.valuation.values()]
 
-# import matplotlib.pyplot as pyplot
-# fig , ax1 = pyplot.subplots()
-# ax2 = ax1.twinx()
-# ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
-# ax2.plot(refVix[1:].index,myBT.valuation.values(),color='k',label='Variance Swap PNL')
-# ax1.legend(loc='upper right')
-# ax2.legend(loc='upper left')
-# pyplot.title('Performance of 3M Variance Swap (MEUR)')
-# fig.autofmt_xdate()
-# pyplot.show()
+refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
+
+import matplotlib.pyplot as pyplot
+fig , ax1 = pyplot.subplots()
+ax2 = ax1.twinx()
+ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
+ax2.plot(refVix[1:].index,myBT.valuation.values(),color='k',label='Variance Swap PNL')
+ax1.legend(loc='upper right')
+ax2.legend(loc='upper left')
+pyplot.title('Performance of 3M Variance Swap (MEUR)')
+fig.autofmt_xdate()
+pyplot.show()
 
 print('done')

@@ -30,18 +30,21 @@ def plotSkew(undl = '^GSPC',volIdx = '^VIX',mydate = '2019-10-11',skPoints = 50,
     for mat in [30,90,360,720]:
         myRef.setVolIdx(volidx=volIdx,flattener=grid)
         flatP = myVS.getStrikeInterp(mat)
-        pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days')
+        pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days',color=next(colors))
 
     pyplot.legend()
+    pyplot.savefig('Artifacts/skewConverge.pdf')
     pyplot.show()
 
     #With Derman
-    myvol = myRef.setVol()/100
+    #myvol = myRef.setVol()/100
     for mat in [30,90,360,720]:
+        myvol = myRef.getVolIdx('^VIX')[mat][int(myRef.getSpot())][0]
         flatP = myVS.getStrikeDer(vol=myvol,b=grid/10,mat=mat)
-        pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days')
+        pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days',color=next(colors))
 
     pyplot.legend()
+    pyplot.savefig('Artifacts/derman.pdf')
     pyplot.show()
 
 def pltManyGamma(spot=100,divK=False):
@@ -60,20 +63,23 @@ def pltManyGamma(spot=100,divK=False):
     pyplot.ylabel('Dollar Gamma')
     pyplot.show()
 
-spot = 100
-grid = 200
-opVals = np.zeros(grid) #To hold sum of option replication no weights
-opK = np.zeros(grid) #Weighted by inverse strike
-opK2 = np.zeros(grid) #Weighted by square of inverse strike
-spGrid = np.linspace(0, 2 * spot, grid)
-for K in range(int(spot*0.25),int(spot*1.75),5):
-    temp = bsDolGam(strike=K,spot=spGrid)
-    opVals = opVals + temp
-    opK = opK + temp/K
-    opK2 = opK2 + temp/(K*K)
+def pltTotalGamma():
+    spot = 100
+    grid = 200
+    opVals = np.zeros(grid) #To hold sum of option replication no weights
+    opK = np.zeros(grid) #Weighted by inverse strike
+    opK2 = np.zeros(grid) #Weighted by square of inverse strike
+    spGrid = np.linspace(0, 2 * spot, grid)
+    for K in range(int(spot*0.25),int(spot*1.75),5):
+        temp = bsDolGam(strike=K,spot=spGrid)
+        opVals = opVals + temp
+        opK = opK + temp/K
+        opK2 = opK2 + temp/(K*K)
 
-opdic={'Inverse':opK, 'Square Inverse':opK2}
-for op in opdic:
-    pyplot.plot(spGrid,opdic[op],color=next(colors),label=op)
-pyplot.legend()
-pyplot.show()
+    opdic={'Inverse':opK, 'Square Inverse':opK2}
+    for op in opdic:
+        pyplot.plot(spGrid,opdic[op],color=next(colors),label=op)
+    pyplot.legend()
+    pyplot.show()
+
+plotSkew()
