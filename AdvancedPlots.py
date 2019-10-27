@@ -28,9 +28,12 @@ def plotSkew(undl = '^GSPC',volIdx = '^VIX',mydate = '2019-10-11',skPoints = 50,
 
     grid = np.linspace(0,maxSkew,num=skPoints)
     for mat in [30,90,360,720]:
-        myRef.setVolIdx(volidx=volIdx,flattener=grid)
+        myRef.setVolIdx(volidx=volIdx,flattener=grid,spacing=0.001)
+        implied = myRef.getVolIdx('^VIX')[mat][int(myRef.getSpot())][0]
         flatP = myVS.getStrikeInterp(mat)
-        pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days',color=next(colors))
+        mycol = next(colors)
+        pyplot.scatter(0,implied,label=str(mat) + 'd Implied ATM Vol', color=mycol)
+        pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days',color=mycol)
 
     pyplot.legend()
     pyplot.savefig('Artifacts/skewConverge.pdf')

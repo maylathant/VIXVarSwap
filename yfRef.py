@@ -104,11 +104,13 @@ class yfRef:
         '''
         return self.spot if self.spot > 0 else self.setSpot()
 
-    def computeSkew(self,myvol,scale=0.02,flattener=1):
+    def computeSkew(self,myvol,scale=0.02,flattener=1,spacing=0.05):
         '''
         :param myvol: integer ATM volatility parameter
         :param scale: scale to determine convexity
         :param flattener (double): Scaling factor. Amount to flatten (or steepen) skew
+        :param spaceing: Determines the courseness the grid of strikes
+        :param spaceing: Determines the courseness the grid of strikes (how far apart strikes are)
         :return: dictionary with strikes and implied volatilities
         models the skew as scale*(skewVol - ATMvol)^2 + ATMvol as strike changes
         models term structure as sqrt(IV/10) - 2
@@ -120,38 +122,40 @@ class yfRef:
         self.vol = {}
         for t in termStru:
             self.vol[t] = {}
-            for i in range(1, 41):
-                temp = myskew(i*myvol*0.05) #Obtain skew for 1m maturity
-                self.vol[t][round(i*self.spot*0.05)] = (temp + myterm(t))/100 #Apply term structure effect and put in percent
-        self.strikedist = self.spot*0.05
+            for i in range(1, int(2/spacing) + 1):
+                temp = myskew(i*myvol*spacing) #Obtain skew for 1m maturity
+                self.vol[t][round(i*self.spot*spacing)] = (temp + myterm(t))/100 #Apply term structure effect and put in percent
+        self.strikedist = self.spot*spacing
         return self.vol
 
-    def setVolIdx(self,volidx,scale=0.02,voldate='',flattener=1):
+    def setVolIdx(self,volidx,scale=0.02,voldate='',flattener=1,spacing=0.05):
         '''
         :param volidx (string): Name of a vol index for which to base the skew
         :param scale (double): Scaling factor for vol skew
         :param voldate (string date): Date to pull volatility
         :param flattener (double): Scaling factor. Amount to flatten (or steepen) skew
+        :param spaceing: Determines the courseness the grid of strikes (how far apart strikes are)
         :return: The skew with the volidx being the ATM point
         spaced apart by 1% of the underlying
         '''
         voldate = self.mydate if voldate == '' else voldate
         myvol = yf.download([volidx],start=voldate,end=voldate)['Close'][0]
-        return self.computeSkew(myvol,scale,flattener)
+        return self.computeSkew(myvol,scale,flattener,spacing=spacing)
 
-    def getVolIdx(self,volidx,scale=0.02,voldate='',flattener=1,skip=True):
+    def getVolIdx(self,volidx,scale=0.02,voldate='',flattener=1,skip=True,spacing=0.05):
         '''
         :param volidx (string): Name of a vol index for which to base the skew
         :param scale (double): Scaling factor for vol skew
         :param voldate (string date): Date to pull volatility
         :param flattener (double): Scaling factor. Amount to flatten (or steepen) skew
         :param skip (bool): If true then just get self.vol
+        :param spaceing: Determines the courseness the grid of strikes (how far apart strikes are)
         :return: Returns the current vol index with a different skew and sets it to self.vol
         '''
         if len(self.vol) < 1 or not skip:
             voldate = self.mydate if voldate == '' else voldate
             myvol = yf.download([volidx],start=voldate,end=voldate)['Close'][0]
-            return self.computeSkew(myvol,scale,flattener)
+            return self.computeSkew(myvol,scale,flattener,spacing=spacing)
         return self.vol
 
     def getVol(self,volidx,scale=0.02, voldate=''):

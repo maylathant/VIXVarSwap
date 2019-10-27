@@ -37,7 +37,7 @@ class VarSwap:
         if expiry == -1: expiry = self.mat
         myskew = self.refSV.getVol('^VIX')[expiry]
         myspot = self.refSV.getSpot()
-        spacing = 0; lastK = 0
+        lastK = 0
 
         self.strike2 = 0
         for sk in myskew.keys():
