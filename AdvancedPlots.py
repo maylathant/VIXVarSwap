@@ -40,7 +40,6 @@ def plotSkew(undl = '^GSPC',volIdx = '^VIX',mydate = '2019-10-11',skPoints = 50,
     pyplot.show()
 
     #With Derman
-    #myvol = myRef.setVol()/100
     for mat in [30,90,360,720]:
         myvol = myRef.getVolIdx('^VIX')[mat][int(myRef.getSpot())][0]
         flatP = myVS.getStrikeDer(vol=myvol,b=grid/10,mat=mat)

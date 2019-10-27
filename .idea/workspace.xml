@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8ec8e6c8-59a9-4099-9e0e-7cb6d5b8c5c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/AdvancedPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/AdvancedPlots.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Artifacts/derman.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/derman.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Artifacts/skewConverge.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/skewConverge.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/VarSwap.py" beforeDir="false" afterPath="$PROJECT_DIR$/VarSwap.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yfRef.py" beforeDir="false" afterPath="$PROJECT_DIR$/yfRef.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,8 +48,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="186">
-              <caret line="35" column="91" selection-start-line="35" selection-start-column="91" selection-end-line="35" selection-end-column="91" />
+            <state relative-caret-position="276">
+              <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
               <folding>
                 <element signature="e#62#89#0" expanded="true" />
               </folding>
@@ -171,7 +167,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="474" />
+    <option name="x" value="640" />
     <option name="y" value="23" />
     <option name="width" value="1235" />
     <option name="height" value="737" />
@@ -338,7 +334,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="474" y="23" width="1235" height="737" extended-state="0" />
+    <frame x="114" y="23" width="1235" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -380,7 +376,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/AdvancedPlots.py</url>
-          <line>60</line>
+          <line>59</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -563,8 +559,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="35" column="91" selection-start-line="35" selection-start-column="91" selection-end-line="35" selection-end-column="91" />
+        <state relative-caret-position="276">
+          <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding>
             <element signature="e#62#89#0" expanded="true" />
           </folding>
