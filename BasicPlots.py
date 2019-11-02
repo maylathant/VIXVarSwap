@@ -10,6 +10,9 @@ import matplotlib.pyplot as pyplot
 from matplotlib import colors as mcolors
 from sklearn.metrics import r2_score
 from scipy.stats import pearsonr
+from itertools import cycle
+colors = cycle(["r",'k',mcolors.CSS4_COLORS['maroon'],mcolors.CSS4_COLORS['indianred'],\
+                mcolors.CSS4_COLORS['darkred']])
 
 def plotVSOptionPayoff():
     '''
@@ -163,8 +166,51 @@ def plotTR():
     myHist = myRef.getRealized(startDate,endDate,winvol)
     myHistTR = myTR.getRealized(startDate,endDate,winvol)
     pyplot.plot(myHist.index,myHist*100,color='k',label=str(winvol) + ' day Realized Vol')
-    pyplot.plot(myHist.index,myHist*100,color='r',label=str(winvol) + ' day Realized Vol, Total Return')
+    pyplot.plot(myHist.index,myHistTR*100,color='r',label=str(winvol) + ' day Realized Vol, Total Return')
     pyplot.legend()
     pyplot.show()
 
-volVolRealized(myTic='^GSPC',startDate = '2006-10-06',endDate = '2019-10-06')
+def volSwpHedge():
+    '''
+    Plot vega hedging of volatility swap
+    :return:
+    '''
+    myTic = '^GSPC'
+    myVolIdx = '^VIX'
+    vegaNot = 513000
+    volstrike = 0.2055
+    startDate = '2019-06-20'
+    volmove = 10 #In % points
+    limitx = 40
+
+    myRef = yfRef(mydate=startDate,undl=myTic)
+    myRef.getVol(myVolIdx,voldate=startDate)
+
+
+    #Create varswap to check payoff grid
+    volgrid = np.linspace(0.00001,limitx/100,200)
+    volswap_g = np.linspace(0,limitx+15,200)
+    volswp = volswap_g*0.513 -volstrike*vegaNot/10000
+    mySwap = VarSwap(vegaNot,myRef)
+    mySwap.strike2 =volstrike*volstrike
+    pnlRng = mySwap.pnlSpan(volgrid)
+    pltVS = {'VS Hedge Base':0,\
+             'VS Hedge + ' + str(volmove) + '%':volmove,\
+             'VS Hedge - ' + str(volmove) + '%':-volmove}
+
+    ##################################################
+    ####### Plot VarSwap PNL Against Option ##########
+    ##################################################
+    for k in pltVS.keys():
+        itcol = next(colors)
+        pyplot.plot(volgrid + 0.01*pltVS[k],pnlRng/1000000 + 0.513*pltVS[k],color=itcol,label=k)
+        pyplot.scatter(volstrike + pltVS[k]/100,0.513*pltVS[k],color=itcol,label='Vol Move ' + str(pltVS[k]) + '%')
+    pyplot.plot(volswap_g/100,volswp,color=mcolors.CSS4_COLORS['grey'],label='Volatility Swap Payoff')
+    pyplot.xlabel('Volatility')
+    pyplot.xlim(left=0)
+    pyplot.ylabel('PnL (MEUR)')
+    pyplot.legend()
+    pyplot.savefig('Artifacts/vegaHedge.pdf',bbox_inches='tight')
+    pyplot.show()
+
+volSwpHedge()
