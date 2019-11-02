@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ec8e6c8-59a9-4099-9e0e-7cb6d5b8c5c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/AdvancedPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/AdvancedPlots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/FwdVarSwapRollDown.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/FwdVarSwapRollDown.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/~$FwdVarSwapRollDown.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BasicPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/BasicPlots.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BasicPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="154" column="12" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
+            <state relative-caret-position="234">
+              <caret line="64" column="54" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
               <folding>
                 <element signature="e#60#87#0" expanded="true" />
               </folding>
@@ -45,7 +48,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="276">
@@ -149,13 +152,13 @@
       <list>
         <option value="$PROJECT_DIR$/VarBacktester.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/BasicPlots.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/statics.py" />
         <option value="$PROJECT_DIR$/VarSwap.py" />
         <option value="$PROJECT_DIR$/yfRef.py" />
         <option value="$PROJECT_DIR$/AdvancedPlots.py" />
+        <option value="$PROJECT_DIR$/BasicPlots.py" />
       </list>
     </option>
   </component>
@@ -167,7 +170,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="640" />
+    <option name="x" value="363" />
     <option name="y" value="23" />
     <option name="width" value="1235" />
     <option name="height" value="737" />
@@ -204,7 +207,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.AdvancedPlots">
+  <component name="RunManager" selected="Python.BasicPlots">
     <configuration name="AdvancedPlots" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VIXVarSwap" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -312,10 +315,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.BasicPlots" />
         <item itemvalue="Python.AdvancedPlots" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.BasicPlots" />
         <item itemvalue="Python.yfRef" />
       </list>
     </recent_temporary>
@@ -334,7 +337,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="114" y="23" width="1235" height="737" extended-state="0" />
+    <frame x="83" y="23" width="1235" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -381,12 +384,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>109</line>
+          <line>110</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>143</line>
+          <line>144</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
       </breakpoints>
@@ -490,16 +493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/BasicPlots.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="154" column="12" selection-start-line="154" selection-start-column="12" selection-end-line="154" selection-end-column="12" />
-          <folding>
-            <element signature="e#60#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -563,6 +556,16 @@
           <caret line="41" column="16" selection-start-line="41" selection-start-column="16" selection-end-line="41" selection-end-column="16" />
           <folding>
             <element signature="e#62#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BasicPlots.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="64" column="54" selection-start-line="64" selection-start-column="54" selection-end-line="64" selection-end-column="54" />
+          <folding>
+            <element signature="e#60#87#0" expanded="true" />
           </folding>
         </state>
       </provider>

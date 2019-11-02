@@ -62,6 +62,7 @@ def volVolRealized(myTic = '^STOXX50E',windowvol = 22,windowvv = 252,startDate =
     pyplot.plot(volR.index,volR,color='r',label=str(windowvol) + 'd Realized Vol')
     pyplot.plot(vvR.index,vvR,color='k',label='Std of Realized Vol (Annualized)')
     pyplot.legend()
+    pyplot.savefig('histVolVol.pdf',bbox_inches='tight')
     pyplot.show()
 
 
@@ -147,17 +148,23 @@ def pltVIXvsHist():
     pyplot.savefig('vixHist.pdf')
     pyplot.show()
 
+def plotTR():
+    '''
+    Plot total return vol vs. non-dividend vol
+    :return:
+    '''
+    startDate = '2006-10-19'
+    endDate = '2019-10-21'
+    myTic = '^GSPC'
+    myTicTR = '^SP500TR'
+    winvol = 180
+    myRef = yfRef(mydate=startDate, undl=myTic)
+    myTR = yfRef(mydate=startDate, undl=myTicTR)
+    myHist = myRef.getRealized(startDate,endDate,winvol)
+    myHistTR = myTR.getRealized(startDate,endDate,winvol)
+    pyplot.plot(myHist.index,myHist*100,color='k',label=str(winvol) + ' day Realized Vol')
+    pyplot.plot(myHist.index,myHist*100,color='r',label=str(winvol) + ' day Realized Vol, Total Return')
+    pyplot.legend()
+    pyplot.show()
 
-startDate = '2006-10-19'
-endDate = '2019-10-21'
-myTic = '^GSPC'
-myTicTR = '^SP500TR'
-winvol = 180
-myRef = yfRef(mydate=startDate, undl=myTic)
-myTR = yfRef(mydate=startDate, undl=myTicTR)
-myHist = myRef.getRealized(startDate,endDate,winvol)
-myHistTR = myTR.getRealized(startDate,endDate,winvol)
-pyplot.plot(myHist.index,myHist*100,color='k',label=str(winvol) + ' day Realized Vol')
-pyplot.plot(myHist.index,myHist*100,color='r',label=str(winvol) + ' day Realized Vol, Total Return')
-pyplot.legend()
-pyplot.show()
+volVolRealized(myTic='^GSPC',startDate = '2006-10-06',endDate = '2019-10-06')
