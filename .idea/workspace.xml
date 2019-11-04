@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BasicPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="215" column="13" selection-start-line="215" selection-start-column="13" selection-end-line="215" selection-end-column="13" />
+            <state relative-caret-position="23">
+              <caret line="223" column="13" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
               <folding>
                 <element signature="e#60#87#0" expanded="true" />
               </folding>
@@ -167,7 +167,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="270" />
+    <option name="x" value="293" />
     <option name="y" value="23" />
     <option name="width" value="1235" />
     <option name="height" value="737" />
@@ -334,7 +334,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="270" y="23" width="1235" height="737" extended-state="0" />
+    <frame x="293" y="23" width="1235" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -376,66 +376,67 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>113</line>
+          <line>121</line>
           <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/BasicPlots.py</url>
+          <line>250</line>
+          <option name="timeStamp" value="93" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="np.sqrt(flatP)" language="Python" />
+        <watch expression="np.argmax(volgrid&gt;cap)" language="Python" />
+        <watch expression="capPay(pnlRng,pnlRng[np.argmax(volgrid&gt;cap)])" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>np.sqrt(flatP)</expression-string>
+        <expression-string>capPay(pnlRng,pnlRng[np.argmax(volgrid&gt;cap)])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx('^VIX')[90][int(myRef.getSpot())][0]</expression-string>
+        <expression-string>capPay(pnlRng,np.argmax(volgrid&gt;cap))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx('^VIX')[90][int(myRef.getSpot())]</expression-string>
+        <expression-string>pnlRng*(pnlRng &lt;= pnlRng[133]) + pnlRng[133]*(pnlRng &gt; pnlRng[133])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx('^VIX')</expression-string>
+        <expression-string>pnlRng[133]*(pnlRng &gt; pnlRng[133])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx('^VIX')[30][int(myRef.getSpot())]</expression-string>
+        <expression-string>1*(pnlRng &gt; pnlRng[133])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx('^VIX')[30]</expression-string>
+        <expression-string>2*(pnlRng &gt; pnlRng[133])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx('^VIX')[30][myRef.getSpot()]</expression-string>
+        <expression-string>pnlRng*(pnlRng &gt; pnlRng[133])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.getVolIdx()[30][myRef.getSpot()]</expression-string>
+        <expression-string>(pnlRng &gt; pnlRng[133])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>myRef.myRef.getSpot()</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>myRef.getSpot()</expression-string>
+        <expression-string>pnlRng[pnlRng &gt; pnlRng[133]]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -549,8 +550,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BasicPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="215" column="13" selection-start-line="215" selection-start-column="13" selection-end-line="215" selection-end-column="13" />
+        <state relative-caret-position="23">
+          <caret line="223" column="13" selection-start-line="223" selection-start-column="13" selection-end-line="223" selection-end-column="13" />
           <folding>
             <element signature="e#60#87#0" expanded="true" />
           </folding>

@@ -14,6 +14,14 @@ from itertools import cycle
 colors = cycle(["r",'k',mcolors.CSS4_COLORS['maroon'],mcolors.CSS4_COLORS['indianred'],\
                 mcolors.CSS4_COLORS['darkred']])
 
+def capPay(payoff,cap):
+    '''
+    :param payoff: uncapped payoff vector for the varswap
+    :param cap: max payoff
+    :return: vector of capped payoffs
+    '''
+    return payoff*(payoff <= cap) + cap*(payoff>cap)
+
 def plotVSOptionPayoff():
     '''
     Plot variance swap payoff vs option payoff against implied vol
@@ -213,4 +221,38 @@ def volSwpHedge():
     pyplot.savefig('Artifacts/vegaHedge.pdf',bbox_inches='tight')
     pyplot.show()
 
-volSwpHedge()
+def pltCap():
+    '''
+    Plot profile of capped variance swap
+    :return:
+    '''
+    myTic = '^GSPC'
+    myVolIdx = '^VIX'
+    vegaNot = 513000
+    volstrike = 0.2055
+    startDate = '2019-06-20'
+    cap = 0.40
+
+    myRef = yfRef(mydate=startDate,undl=myTic)
+    myRef.getVol(myVolIdx,voldate=startDate)
+
+
+    #Create varswap to check payoff grid
+    volgrid = np.linspace(0.00001,cap+0.2,200)
+    mySwap = VarSwap(vegaNot,myRef)
+    mySwap.strike2 =volstrike*volstrike
+    pnlRng = mySwap.pnlSpan(volgrid)
+    cappay = pnlRng[np.argmax(volgrid>cap)] #maximum payoff
+    capPNL = capPay(pnlRng,cappay)
+
+    ##################################################
+    ####### Plot VarSwap PNL Against Option ##########
+    ##################################################
+    pyplot.plot(volgrid,pnlRng/10e6,color='k',label='Variance Swap, No Cap')
+    pyplot.plot(volgrid,capPNL/10e6,color='r',label='Variance Swap with Cap')
+    pyplot.xlabel('Volatility')
+    pyplot.xlim(left=0)
+    pyplot.ylabel('PnL (MEUR)')
+    pyplot.legend()
+    pyplot.savefig('Artifacts/capPayoff.pdf',bbox_inches='tight')
+    pyplot.show()
