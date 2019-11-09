@@ -22,6 +22,14 @@ def capPay(payoff,cap):
     '''
     return payoff*(payoff <= cap) + cap*(payoff>cap)
 
+def varCall(payoff,strike):
+    '''
+    Plot the payoff for a call on variance
+    :return:
+    '''
+    return payoff*(payoff > strike)
+
+
 def plotVSOptionPayoff():
     '''
     Plot variance swap payoff vs option payoff against implied vol
@@ -256,3 +264,39 @@ def pltCap():
     pyplot.legend()
     pyplot.savefig('Artifacts/capPayoff.pdf',bbox_inches='tight')
     pyplot.show()
+
+def pltCall():
+    '''
+    Plot call on variance
+    :return:
+    '''
+    myTic = '^GSPC'
+    myVolIdx = '^VIX'
+    vegaNot = 513000
+    volstrike = 0.2055
+    startDate = '2019-06-20'
+
+    myRef = yfRef(mydate=startDate,undl=myTic)
+    myRef.getVol(myVolIdx,voldate=startDate)
+
+
+    #Create varswap to check payoff grid
+    volgrid = np.linspace(0.00001,volstrike+0.2,200)
+    pnlRng = 50*(volgrid*volgrid - volstrike*volstrike)/volstrike
+    kpay = pnlRng[np.argmax(volgrid>volstrike)]
+    kPNL = varCall(pnlRng,kpay)
+    vanPNL = varCall((volgrid-volstrike)*100,0)
+
+    ##################################################
+    ####### Plot VarSwap PNL Against Option ##########
+    ##################################################
+    pyplot.plot(volgrid,kPNL,color='r',label='Option on Variance')
+    pyplot.plot(volgrid, vanPNL, color='k', label='Option on Volatility')
+    pyplot.xlabel('Volatility')
+    pyplot.xlim(left=0)
+    pyplot.ylabel('PnL (MEUR)')
+    pyplot.legend()
+    pyplot.savefig('Artifacts/varcallPay.pdf',bbox_inches='tight')
+    pyplot.show()
+
+pltCall()
