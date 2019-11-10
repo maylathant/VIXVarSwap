@@ -299,4 +299,15 @@ def pltCall():
     pyplot.savefig('Artifacts/varcallPay.pdf',bbox_inches='tight')
     pyplot.show()
 
-pltCall()
+def plotvixInv():
+    startDate = '2015-01-02'
+    endDate = '2019-11-08'
+    myTic = "SVXY"
+    myRef = yfRef(mydate=startDate,undl=myTic)
+    mySpot = myRef.setSpotHist(startDate,endDate)
+
+    pyplot.plot(mySpot.index,mySpot,color='r')
+    pyplot.savefig('Artifacts/invVix.pdf', bbox_inches='tight')
+    pyplot.show()
+
+plotvixInv()
