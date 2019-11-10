@@ -164,7 +164,7 @@ def pltVIXvsHist():
     pyplot.plot(myVIX.index,myVIX,color='r',label='VIX Index')
     pyplot.plot(myHist.index,myHist*100,color='k',label=str(winvol) + ' day Realized Vol')
     pyplot.legend()
-    pyplot.savefig('vixHist.pdf')
+    pyplot.savefig('Artifacts/vixHist.pdf',bbox_inches='tight')
     pyplot.show()
 
 def plotTR():
@@ -310,4 +310,4 @@ def plotvixInv():
     pyplot.savefig('Artifacts/invVix.pdf', bbox_inches='tight')
     pyplot.show()
 
-plotvixInv()
+pltVIXvsHist()
