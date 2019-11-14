@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ec8e6c8-59a9-4099-9e0e-7cb6d5b8c5c9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Artifacts/vegaHedge.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/vegaHedge.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/vsopPNL.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/vsopPNL.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BasicPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/BasicPlots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VarBacktester.py" beforeDir="false" afterPath="$PROJECT_DIR$/VarBacktester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+            <state relative-caret-position="127">
+              <caret line="41" column="15" lean-forward="true" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
               <folding>
                 <element signature="e#30#53#0" expanded="true" />
               </folding>
@@ -36,8 +40,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/BasicPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="166" column="19" selection-start-line="166" selection-start-column="19" selection-end-line="166" selection-end-column="19" />
+            <state relative-caret-position="223">
+              <caret line="221" column="8" selection-start-line="221" selection-start-column="8" selection-end-line="221" selection-end-column="8" />
               <folding>
                 <element signature="e#60#87#0" expanded="true" />
               </folding>
@@ -48,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-95">
+            <state relative-caret-position="90">
               <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="e#62#89#0" expanded="true" />
@@ -96,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VarBacktester.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="38" column="56" lean-forward="true" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+            <state relative-caret-position="277">
+              <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="78" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -139,6 +143,7 @@
       <find>setVol</find>
       <find>get</find>
       <find>computeSkew</find>
+      <find>self.du</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -147,14 +152,14 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/VarBacktester.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/statics.py" />
         <option value="$PROJECT_DIR$/VarSwap.py" />
         <option value="$PROJECT_DIR$/yfRef.py" />
         <option value="$PROJECT_DIR$/AdvancedPlots.py" />
+        <option value="$PROJECT_DIR$/VarBacktester.py" />
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/BasicPlots.py" />
       </list>
     </option>
@@ -167,7 +172,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="257" />
+    <option name="x" value="327" />
     <option name="y" value="23" />
     <option name="width" value="1235" />
     <option name="height" value="737" />
@@ -313,9 +318,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.BasicPlots" />
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.AdvancedPlots" />
         <item itemvalue="Python.test" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.yfRef" />
       </list>
     </recent_temporary>
@@ -334,7 +339,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="27" y="23" width="1235" height="737" extended-state="0" />
+    <frame x="327" y="23" width="1235" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
@@ -361,7 +366,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/main.py</url>
-          <line>82</line>
+          <line>85</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -381,76 +386,90 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>258</line>
+          <line>260</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>292</line>
+          <line>294</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>41</line>
+          <option name="timeStamp" value="102" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="103" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>308</line>
-          <option name="timeStamp" value="100" />
+          <line>219</line>
+          <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
-        <watch expression="volgrid-volstrike" language="Python" />
+        <watch expression="(pltVS[k])*vegaNot/1e6" language="Python" />
+        <watch expression="pltVS[k]" language="Python" />
+        <watch expression="pnlRng[shift_idx]/1e6" language="Python" />
+        <watch expression="volgrid" language="Python" />
+        <watch expression="1e6" language="Python" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
       <expression>
-        <expression-string>volgrid-volstrike</expression-string>
+        <expression-string>(pltVS[k])*vegaNot/1e6</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>volgrid-kpay</expression-string>
+        <expression-string>pltVS[k]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>capPay(pnlRng,pnlRng[np.argmax(volgrid&gt;cap)])</expression-string>
+        <expression-string>pnlRng[shift_idx]/1e6</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>capPay(pnlRng,np.argmax(volgrid&gt;cap))</expression-string>
+        <expression-string>(pltVS[k]-volstrike*100)*vegaNot/1e6</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>pnlRng*(pnlRng &lt;= pnlRng[133]) + pnlRng[133]*(pnlRng &gt; pnlRng[133])</expression-string>
+        <expression-string>volswp</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>pnlRng[133]*(pnlRng &gt; pnlRng[133])</expression-string>
+        <expression-string>pnlRng/1e6 + 0.513*pltVS[k]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>1*(pnlRng &gt; pnlRng[133])</expression-string>
+        <expression-string>(volstrike+pltVS[k])*0.01</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>2*(pnlRng &gt; pnlRng[133])</expression-string>
+        <expression-string>volgrid</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>pnlRng*(pnlRng &gt; pnlRng[133])</expression-string>
+        <expression-string>(pnlRng/1e6 + 0.513*pltVS[k])</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>(pnlRng &gt; pnlRng[133])</expression-string>
+        <expression-string>(1+0.01*pltVS[k])*volstrike</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -482,26 +501,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="254">
           <caret line="228" selection-start-line="228" selection-end-line="228" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VarBacktester.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="38" column="56" lean-forward="true" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
-          <folding>
-            <element signature="e#30#53#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -552,9 +551,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/VarBacktester.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="41" column="15" lean-forward="true" selection-start-line="41" selection-start-column="15" selection-end-line="41" selection-end-column="15" />
+          <folding>
+            <element signature="e#30#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-95">
+        <state relative-caret-position="90">
           <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="e#62#89#0" expanded="true" />
@@ -564,8 +583,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/BasicPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="166" column="19" selection-start-line="166" selection-start-column="19" selection-end-line="166" selection-end-column="19" />
+        <state relative-caret-position="223">
+          <caret line="221" column="8" selection-start-line="221" selection-start-column="8" selection-end-line="221" selection-end-column="8" />
           <folding>
             <element signature="e#60#87#0" expanded="true" />
           </folding>

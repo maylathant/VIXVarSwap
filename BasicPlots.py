@@ -65,7 +65,7 @@ def plotVSOptionPayoff():
     pyplot.xlabel('Volatility')
     pyplot.ylabel('PnL (MEUR)')
     pyplot.legend()
-    pyplot.savefig('vsopPNL.pdf')
+    pyplot.savefig('Artifacts/vsopPNL.pdf',bbox_inches='tight')
     pyplot.show()
 
 
@@ -219,7 +219,9 @@ def volSwpHedge():
     ##################################################
     for k in pltVS.keys():
         itcol = next(colors)
-        pyplot.plot(volgrid + 0.01*pltVS[k],pnlRng/1000000 + 0.513*pltVS[k],color=itcol,label=k)
+        shift_idx = np.argmax(volgrid>(volstrike+pltVS[k]*0.01))
+        shift = pnlRng[shift_idx]/1e6 - pltVS[k]*vegaNot/1e6
+        pyplot.plot(volgrid + 0.01*pltVS[k],pnlRng/1e6+ 0.513*pltVS[k]+shift,color=itcol,label=k)
         pyplot.scatter(volstrike + pltVS[k]/100,0.513*pltVS[k],color=itcol,label='Vol Move ' + str(pltVS[k]) + '%')
     pyplot.plot(volswap_g/100,volswp,color=mcolors.CSS4_COLORS['grey'],label='Volatility Swap Payoff')
     pyplot.xlabel('Volatility')
@@ -310,4 +312,4 @@ def plotvixInv():
     pyplot.savefig('Artifacts/invVix.pdf', bbox_inches='tight')
     pyplot.show()
 
-pltVIXvsHist()
+volSwpHedge()

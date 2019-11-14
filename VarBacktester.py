@@ -111,7 +111,7 @@ class VarBacktester:
             self.myRef.getVol('^VIX', voldate=day.strftime("%Y-%m-%d"))
             remain = vsTerm - i%vsTerm  # Remaining days
             self.fairStrike[day] = VarSwap(1, self.myRef, mat=remain).getStrikeInterp()
-            self.valuation[day] = -1 / self.duration * ((self.duration - remain) * (self.realized[day] - strikeLast) \
+            self.valuation[day] = -1 / vsTerm * ((vsTerm - remain) * (self.realized[day] - strikeLast) \
                                 + remain * (self.fairStrike[day] - strikeLast)) * 10000 + cummu
 
         # Reset ref data
