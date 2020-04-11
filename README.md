@@ -1,5 +1,7 @@
 # VIX and Variance Swap Research Project
 
+The file, "engine.py," launches a demo that showcases some of the tools built for a research project which analyzed VIX and Variance swap strategies. Simply enter a numeric input to run a computation and the results will be plotted for you.
+
 ## Needed packages
 - matplotlib==2.1.0
 - numpy==1.16.4
@@ -7,8 +9,6 @@
 - scipy==1.0.0
 - yfinance==0.1.42 (For reference data)
 - pandas==0.24.2
-
-The file, "engine.py," launches a demo that showcases some of the tools built for a research project which analyzed VIX and Variance swap strategies. Simply enter a numeric input to run a computation and the results will be plotted for you.
 
 ## The Options for the Demo include:
 
