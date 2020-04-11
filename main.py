@@ -20,11 +20,11 @@ vegaNot = 513000
 startDate = '2019-05-20'
 fwdStart = '2019-08-20'
 
-# myBT = VarBacktester(startDate,mydate,myTic)
-# myBT.myRef.getSpotHist(start=startDate,end=mydate)
-# myBT.myRef.getVol('^VIX',scale=0.02)
+myBT = VarBacktester(startDate,mydate,myTic)
+myBT.myRef.getSpotHist(start=startDate,end=mydate)
+myBT.myRef.getVol('^VIX',scale=0.02)
 # #Save into pickle
-# with open(r'cache/myBT','wb') as output: ticDist = pickle.dump(myBT,output)
+with open(r'cache/myBT','wb') as output: ticDist = pickle.dump(myBT,output)
 #Load from pickle
 with open(r'cache/myBT','rb') as input: myBT = pickle.load(input)
 
@@ -32,24 +32,23 @@ with open(r'cache/myBT','rb') as input: myBT = pickle.load(input)
 
 #Plot performance of rolling short variance swaps
 refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
-myrealized = myBT.myRef.getRealized(start=startDate,end=mydate,window=30)
+#myrealized = myBT.myRef.getRealized(start=startDate,end=mydate,window=30)
 myVIX = myBT.myRef.getVolHist(startDate,mydate)
 realized, fair, value = myBT.btShortVarRoll()
 fig , ax1 = pyplot.subplots()
 ax2 = ax1.twinx()
-#ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
-ax1.plot(refVix[1:].index,myrealized[1:]*100,color=mcolors.CSS4_COLORS['maroon'],label='1M Realized')
-ax1.plot(refVix[1:].index,myVIX,color='r',label='VIX Index')
+#ax1.plot(refVix[1:].index,myrealized[1:]*100,color=mcolors.CSS4_COLORS['maroon'],label='1M Realized')
+ax1.plot(refVix[1:].index,myVIX[1:],color='r',label='VIX Index')
 ax2.plot(refVix[1:].index,value.values(),color='k',label=' Rolled Short VS PNL')
-ax1.legend(loc='lower left')
+ax1.legend(loc='lower right')
 ax2.legend(loc='upper left')
-#pyplot.title('Performance of Rolling Short Variance Swap (MEUR)')
+pyplot.title('Performance of Rolling Short Variance Swap (MEUR)')
 fig.autofmt_xdate()
 pyplot.savefig('Artifacts/rollShort.pdf', bbox_inches='tight')
 pyplot.show()
 
-# Plot performance of forward variance swap
-
+# # Plot performance of forward variance swap
+#
 # refVix = myBT.myRef.setVolHist(start=startDate,end=fwdStart)
 # myrealized = myBT.myRef.getRealized(start=startDate,end=fwdStart,window=30)[1:]
 # near, far, valuation = myBT.btVSFoward(fwdStart=fwdStart)

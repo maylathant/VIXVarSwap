@@ -83,5 +83,3 @@ def pltTotalGamma():
         pyplot.plot(spGrid,opdic[op],color=next(colors),label=op)
     pyplot.legend()
     pyplot.show()
-
-plotSkew()

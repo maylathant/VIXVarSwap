@@ -1,8 +1,17 @@
 import numpy as np
 import scipy.stats as sp
+import datetime as dt
 '''
 File containing all utility functions
 '''
+
+def incDate(mydt):
+	'''
+	:param mydt: (String) YYYY-MM-DD format
+	:return: (String) in same format as input incremented by one day
+	'''
+	return (dt.datetime.strptime(mydt,'%Y-%m-%d') + dt.timedelta(days=1)).strftime('%Y-%m-%d')
+
 
 def getd1(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1):
 	'''

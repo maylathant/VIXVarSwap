@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 import datetime as dt
 from pandas.tseries.offsets import BDay
+from utils import incDate
 
 class yfRef:
     '''
@@ -30,7 +31,7 @@ class yfRef:
         :return: void, sets self.spot price to spot of self.mydate
         '''
         spotDate = self.mydate if spotDate == '' else spotDate
-        self.spot = yf.download([self.undl],start=spotDate,end=spotDate)['Close'][0]
+        self.spot = yf.download([self.undl],start=spotDate,end=incDate(spotDate))['Close'][0]
         return self.spot
 
     def setVol(self,volDate='',volIndex='^VIX'):
@@ -40,7 +41,7 @@ class yfRef:
         :return: vol index (scaler)
         '''
         volDate = self.mydate if volDate == '' else volDate
-        self.volPoint = yf.download([volIndex],start=volDate,end=volDate)['Close'][0]
+        self.volPoint = yf.download([volIndex],start=volDate,end=incDate(volDate))['Close'][0]
         return self.volPoint
 
     def setSpotHist(self,start,end):
@@ -50,7 +51,7 @@ class yfRef:
         :param end: end date
         :return: Series of spot prices
         '''
-        self.spotHist = yf.download([self.undl],start=start,end=end)['Close']
+        self.spotHist = yf.download([self.undl],start=start,end=incDate(end))['Close']
         return self.spotHist
 
     def getSpotHist(self,start,end):
@@ -61,7 +62,7 @@ class yfRef:
         :return: Series of spot prices
         '''
         if len(self.spotHist) < 1:
-            self.spotHist = yf.download([self.undl],start=start,end=end)['Close']
+            self.spotHist = yf.download([self.undl],start=start,end=incDate(end))['Close']
         return self.spotHist
 
     def getSqRet(self,start,end):
@@ -82,7 +83,7 @@ class yfRef:
         :param name: Name of volatility parameter
         :return: Series of vol prices
         '''
-        self.volHist = yf.download([name],start=start,end=end)['Close']
+        self.volHist = yf.download([name],start=start,end=incDate(end))['Close']
         return self.volHist
 
     def getVolHist(self,start,end,name='^VIX'):
@@ -94,7 +95,7 @@ class yfRef:
         :return: Series of vol prices
         '''
         if len(self.volHist) < 1:
-            self.volHist = yf.download([name],start=start,end=end)['Close']
+            self.volHist = yf.download([name],start=start,end=incDate(end))['Close']
         return self.volHist
 
     def getSpot(self):
@@ -139,7 +140,7 @@ class yfRef:
         spaced apart by 1% of the underlying
         '''
         voldate = self.mydate if voldate == '' else voldate
-        myvol = yf.download([volidx],start=voldate,end=voldate)['Close'][0]
+        myvol = yf.download([volidx],start=voldate,end=incDate(voldate))['Close'][0]
         return self.computeSkew(myvol,scale,flattener,spacing=spacing)
 
     def getVolIdx(self,volidx,scale=0.02,voldate='',flattener=1,skip=True,spacing=0.05):
@@ -154,7 +155,7 @@ class yfRef:
         '''
         if len(self.vol) < 1 or not skip:
             voldate = self.mydate if voldate == '' else voldate
-            myvol = yf.download([volidx],start=voldate,end=voldate)['Close'][0]
+            myvol = yf.download([volidx],start=voldate,end=incDate(voldate))['Close'][0]
             return self.computeSkew(myvol,scale,flattener,spacing=spacing)
         return self.vol
 
