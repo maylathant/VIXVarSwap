@@ -2,6 +2,8 @@
 
 The file, "main.py," launches a demo that showcases some of the tools built for a research project which analyzed VIX and Variance swap strategies. Simply enter a numeric input to run a computation and the results will be plotted for you.
 
+### To run the Demo, Navigate to the Folder where the files are saved in a terminal and type "python main.py"
+
 ## Needed packages
 - matplotlib==2.1.0
 - numpy==1.16.4
