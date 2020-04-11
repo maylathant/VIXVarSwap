@@ -1,85 +1,28 @@
 '''
 main execution file
 '''
+from BasicPlots import *
+from AdvancedPlots import  *
+from SampleSim import *
 
+#########
+#Statics#
+#########
+demomenu = {1:('Plot Variance Swap vs. Option',plotVSOptionPayoff),
+            2:('Plot Realized Vol of Vol', volVolRealized),
+            3:('A Plot that Shows Mean Reversion of Volatility', plotMeanRev),
+            4:('Plot Dynamic Hedging of Volatility Swap', volSwpHedge),
+            5:('Plot Variance Swap Prices Against Skewness', plotSkew),
+            6:('Plot Backtesting Results for Short VS Strategy', plt_shtvs),
+            7:('Plot Backtesting Results for Forward VS Strategy', plt_fwdvsbt),
+            8:('Plot Backtesting Results for Buy and Hold VS', plt_longvs),
+            9:('Plot Dollar Gamma for a Series of Options Across Different Strikes',pltManyGamma)}
 
-from yfRef import yfRef
-from VarSwap import VarSwap
-from VarBacktester import VarBacktester
-import pickle
-import statics as sta
-import numpy as np
-import matplotlib.pyplot as pyplot
-from matplotlib import colors as mcolors
-
-mydate = '2019-09-20'
-myTic = '^GSPC'
-myVolIdx = '^VIX'
-myScale = 0.05
-vegaNot = 513000
-startDate = '2019-05-20'
-fwdStart = '2019-08-20'
-
-myBT = VarBacktester(startDate,mydate,myTic)
-myBT.myRef.getSpotHist(start=startDate,end=mydate)
-myBT.myRef.getVol('^VIX',scale=0.02)
-# #Save into pickle
-with open(r'cache/myBT','wb') as output: ticDist = pickle.dump(myBT,output)
-#Load from pickle
-with open(r'cache/myBT','rb') as input: myBT = pickle.load(input)
-
-
-
-#Plot performance of rolling short variance swaps
-refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
-#myrealized = myBT.myRef.getRealized(start=startDate,end=mydate,window=30)
-myVIX = myBT.myRef.getVolHist(startDate,mydate)
-realized, fair, value = myBT.btShortVarRoll()
-fig , ax1 = pyplot.subplots()
-ax2 = ax1.twinx()
-#ax1.plot(refVix[1:].index,myrealized[1:]*100,color=mcolors.CSS4_COLORS['maroon'],label='1M Realized')
-ax1.plot(refVix[1:].index,myVIX[1:],color='r',label='VIX Index')
-ax2.plot(refVix[1:].index,value.values(),color='k',label=' Rolled Short VS PNL')
-ax1.legend(loc='lower right')
-ax2.legend(loc='upper left')
-pyplot.title('Performance of Rolling Short Variance Swap (MEUR)')
-fig.autofmt_xdate()
-pyplot.savefig('Artifacts/rollShort.pdf', bbox_inches='tight')
-pyplot.show()
-
-# # Plot performance of forward variance swap
-#
-# refVix = myBT.myRef.setVolHist(start=startDate,end=fwdStart)
-# myrealized = myBT.myRef.getRealized(start=startDate,end=fwdStart,window=30)[1:]
-# near, far, valuation = myBT.btVSFoward(fwdStart=fwdStart)
-#
-# fig , ax1 = pyplot.subplots()
-# ax2 = ax1.twinx()
-# #ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
-# ax1.plot(refVix[1:].index,myrealized*100,color=mcolors.CSS4_COLORS['maroon'],label='1M Realized')
-# ax2.plot(refVix[1:].index,valuation.values(),color='k',label=' Forward Variance Swap PNL')
-# ax1.legend(loc='lower left')
-# ax2.legend(loc='upper left')
-# pyplot.title('Performance of 2M/3M Fwd Variance Swap (MEUR)')
-# fig.autofmt_xdate()
-# pyplot.show()
-
-
-# #Plot performance of holding 3M variance
-# realized, fairStrike = myBT.runBacktest()
-# cumPNL = [x*vegaNot/1000000 for x in myBT.valuation.values()]
-#
-# refVix = myBT.myRef.setVolHist(start=startDate,end=mydate)
-#
-# import matplotlib.pyplot as pyplot
-# fig , ax1 = pyplot.subplots()
-# ax2 = ax1.twinx()
-# ax1.plot(refVix[1:].index,refVix[1:],color='r',label='VIX')
-# ax2.plot(refVix[1:].index,myBT.valuation.values(),color='k',label='Variance Swap PNL')
-# ax1.legend(loc='upper right')
-# ax2.legend(loc='upper left')
-# pyplot.title('Performance of 3M Variance Swap (MEUR)')
-# fig.autofmt_xdate()
-# pyplot.show()
-
-print('done')
+if __name__ == '__main__':
+    print('Welcome to the Variance Swap Playground Demo!')
+    print('Please Select a Numeric Keyboard Input: \n')
+    for km in demomenu:
+        print(str(km) + ':',demomenu[km][0])
+    numkey = int(input('\nPlease Enter a Number:'))
+    demomenu[numkey][1]()
+    print('Done!')

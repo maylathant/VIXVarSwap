@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ec8e6c8-59a9-4099-9e0e-7cb6d5b8c5c9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/SampleSim.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/VIXVarSwap.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/VIXVarSwap.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AdvancedPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/AdvancedPlots.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Artifacts/rollShort.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/rollShort.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cache/myBT" beforeDir="false" afterPath="$PROJECT_DIR$/cache/myBT" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/derman.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/derman.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/skewConverge.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/skewConverge.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/vegaHedge.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/vegaHedge.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Artifacts/vsopPNL.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/Artifacts/vsopPNL.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BasicPlots.py" beforeDir="false" afterPath="$PROJECT_DIR$/BasicPlots.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SampleSim.py" beforeDir="false" afterPath="$PROJECT_DIR$/SampleSim.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yfRef.py" beforeDir="false" afterPath="$PROJECT_DIR$/yfRef.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics.py" beforeDir="false" afterPath="$PROJECT_DIR$/statics.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,8 +24,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/statics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+            <state>
+              <caret column="58" selection-start-column="58" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -33,10 +33,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+            <state relative-caret-position="285">
+              <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
               <folding>
-                <element signature="e#30#53#0" expanded="true" />
+                <element signature="e#28#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,8 +45,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SampleSim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="39" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+            <state relative-caret-position="293">
+              <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
+              <folding>
+                <element signature="e#48#87#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/BasicPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="344" selection-start-line="344" selection-end-line="344" />
+            <state relative-caret-position="293">
+              <caret line="347" selection-start-line="347" selection-end-line="347" />
               <folding>
                 <element signature="e#60#87#0" expanded="true" />
               </folding>
@@ -66,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1275">
-              <caret line="85" selection-start-line="85" selection-end-line="85" />
+            <state relative-caret-position="501">
+              <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
               <folding>
                 <element signature="e#62#89#0" expanded="true" />
               </folding>
@@ -102,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VarBacktester.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1665">
+            <state relative-caret-position="1299">
               <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="78" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -114,7 +117,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/VarSwap.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
+            <state relative-caret-position="585">
               <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
@@ -155,12 +158,12 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/statics.py" />
         <option value="$PROJECT_DIR$/VarSwap.py" />
         <option value="$PROJECT_DIR$/VarBacktester.py" />
-        <option value="$PROJECT_DIR$/BasicPlots.py" />
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/yfRef.py" />
+        <option value="$PROJECT_DIR$/statics.py" />
+        <option value="$PROJECT_DIR$/BasicPlots.py" />
         <option value="$PROJECT_DIR$/AdvancedPlots.py" />
         <option value="$PROJECT_DIR$/SampleSim.py" />
         <option value="$PROJECT_DIR$/main.py" />
@@ -168,7 +171,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="76" />
+    <option name="x" value="78" />
     <option name="y" value="23" />
     <option name="width" value="1235" />
     <option name="height" value="737" />
@@ -272,7 +275,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="statics" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="VIXVarSwap" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -284,7 +287,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/statics.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -318,16 +321,16 @@
       <item itemvalue="Python.AdvancedPlots" />
       <item itemvalue="Python.BasicPlots" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.test" />
       <item itemvalue="Python.utils" />
+      <item itemvalue="Python.statics" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.utils" />
-        <item itemvalue="Python.BasicPlots" />
         <item itemvalue="Python.AdvancedPlots" />
-        <item itemvalue="Python.test" />
+        <item itemvalue="Python.BasicPlots" />
+        <item itemvalue="Python.statics" />
+        <item itemvalue="Python.utils" />
       </list>
     </recent_temporary>
   </component>
@@ -344,8 +347,17 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
-    <frame x="76" y="23" width="1235" height="737" extended-state="0" />
+    <frame x="78" y="23" width="1235" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24958813" />
@@ -357,7 +369,7 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32868218" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32868218" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32868218" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
@@ -371,38 +383,33 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>84</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/yfRef.py</url>
           <line>215</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/AdvancedPlots.py</url>
-          <line>59</line>
+          <line>63</line>
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>129</line>
+          <line>130</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>260</line>
+          <line>262</line>
           <option name="timeStamp" value="93" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>294</line>
+          <line>296</line>
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BasicPlots.py</url>
-          <line>219</line>
+          <line>220</line>
           <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>
@@ -499,33 +506,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/VarBacktester.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1665">
-          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/VarSwap.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/statics.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/pandas/core/series.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -567,10 +547,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/VarBacktester.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1299">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/VarSwap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/statics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="58" selection-start-column="58" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/BasicPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="344" selection-start-line="344" selection-end-line="344" />
+        <state relative-caret-position="293">
+          <caret line="347" selection-start-line="347" selection-end-line="347" />
           <folding>
             <element signature="e#60#87#0" expanded="true" />
           </folding>
@@ -579,8 +586,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AdvancedPlots.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
+        <state relative-caret-position="501">
+          <caret line="88" column="17" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
           <folding>
             <element signature="e#62#89#0" expanded="true" />
           </folding>
@@ -589,17 +596,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/SampleSim.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="39" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+        <state relative-caret-position="293">
+          <caret line="92" column="17" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="17" />
+          <folding>
+            <element signature="e#48#87#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="40" column="16" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
+        <state relative-caret-position="285">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
           <folding>
-            <element signature="e#30#53#0" expanded="true" />
+            <element signature="e#28#52#0" expanded="true" />
           </folding>
         </state>
       </provider>
