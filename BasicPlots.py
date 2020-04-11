@@ -81,6 +81,7 @@ def volVolRealized(myTic = '^STOXX50E',windowvol = 22,windowvv = 252,startDate =
     pyplot.plot(volR.index,volR,color='r',label=str(windowvol) + 'd Realized Vol')
     pyplot.plot(vvR.index,vvR,color='k',label='Std of Realized Vol (Annualized)')
     pyplot.legend()
+    pyplot.title('Realized Vol against Vol of Vol')
     pyplot.savefig('histVolVol.pdf',bbox_inches='tight')
     pyplot.show()
 
@@ -228,6 +229,7 @@ def volSwpHedge():
     pyplot.xlim(left=0)
     pyplot.ylabel('PnL (MEUR)')
     pyplot.legend()
+    pyplot.title('Dynamic Hedging of Vol Swap with Var Swap')
     pyplot.savefig('Artifacts/vegaHedge.pdf',bbox_inches='tight')
     pyplot.show()
 
@@ -342,3 +344,4 @@ def pltDeltaHdg():
     pyplot.legend()
     pyplot.savefig('Artifacts/hedgeVSoption.png', bbox_inches='tight')
     pyplot.show()
+

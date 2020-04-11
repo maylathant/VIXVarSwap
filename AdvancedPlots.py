@@ -34,7 +34,9 @@ def plotSkew(undl = '^GSPC',volIdx = '^VIX',mydate = '2019-10-11',skPoints = 50,
         mycol = next(colors)
         pyplot.scatter(0,implied,label=str(mat) + 'd Implied ATM Vol', color=mycol)
         pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days',color=mycol)
-
+    pyplot.xlabel('Skewness Factor')
+    pyplot.ylabel('Derman''s Approximation')
+    pyplot.title('Convergence of Dermans Approximaion to ATM Vol')
     pyplot.legend()
     pyplot.savefig('Artifacts/skewConverge.pdf')
     pyplot.show()
@@ -44,8 +46,10 @@ def plotSkew(undl = '^GSPC',volIdx = '^VIX',mydate = '2019-10-11',skPoints = 50,
         myvol = myRef.getVolIdx('^VIX')[mat][int(myRef.getSpot())][0]
         flatP = myVS.getStrikeDer(vol=myvol,b=grid/10,mat=mat)
         pyplot.plot(grid,np.sqrt(flatP),label='Maturity = ' + str(mat) +' Days',color=next(colors))
-
+    pyplot.xlabel('Skewness Factor')
+    pyplot.ylabel('Fair Strike of a Variance Swap')
     pyplot.legend()
+    pyplot.title('Convergence of Variance Swaps to ATM Vol')
     pyplot.savefig('Artifacts/derman.pdf')
     pyplot.show()
 
