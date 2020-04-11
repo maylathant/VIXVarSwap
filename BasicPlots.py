@@ -312,4 +312,33 @@ def plotvixInv():
     pyplot.savefig('Artifacts/invVix.pdf', bbox_inches='tight')
     pyplot.show()
 
-volSwpHedge()
+def plotunitGam():
+    '''
+    Plot unitary gamma for many spots
+    :return:
+    '''
+    spGrid = np.linspace(0.00001,2,200)
+    gammas = utils.bsGamma(spot = spGrid, strike = 1)
+    pyplot.plot(spGrid,gammas)
+    pyplot.xlabel("Spot Price")
+    pyplot.ylabel("Unitary Gamma")
+    pyplot.savefig('Artifacts/gammaProfile.png', bbox_inches='tight')
+    pyplot.show()
+
+def pltDeltaHdg():
+    '''
+    Plot option against delta hegde
+    :return:
+    '''
+    spot = 1
+    pGrid = np.linspace(spot-0.05*spot,spot+0.2*spot,200)
+    hedge = utils.bsDeltaCall(spot = spot, strike = spot)
+    hedge = hedge*(pGrid-1) + utils.BSCall(spot=spot,strike=spot)
+    prices = utils.BSCall(spot = pGrid, strike = spot)
+    pyplot.plot(pGrid,prices,label="Call Option")
+    pyplot.plot(pGrid,hedge, label="Delta Hedge")
+    pyplot.scatter(1,utils.BSCall(spot=spot,strike=spot),label="Starting Hedge")
+    pyplot.xlabel("Spot Price")
+    pyplot.legend()
+    pyplot.savefig('Artifacts/hedgeVSoption.png', bbox_inches='tight')
+    pyplot.show()

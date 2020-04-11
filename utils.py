@@ -47,6 +47,18 @@ def BSCallDig(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1)
 	d2 = d1 - vol*np.sqrt(time)
 	return np.exp(-rate*time)*sp.norm.cdf(d2)
 
+def bsDeltaCall(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1):
+	'''
+	:param spot: Spot price of underlying
+	:param strike: strike price of option
+	:param div: dividend rate of underlying
+	:param rate: risk free rate in years
+	:param vol: volatility of underlying in years
+	:param time: time to maturity in years
+	:return: The delta of the call option
+	'''
+	d1 = getd1(spot, strike, div, rate, vol, time)
+	return np.exp(-time*div)*sp.norm.cdf(d1)
 
 def bsGamma(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1):
 	'''
@@ -56,7 +68,7 @@ def bsGamma(spot = 100, strike = 100, div = 0, rate = 0, vol = 0.15, time = 1):
 	:param rate: risk free rate in years
 	:param vol: volatility of underlying in years
 	:param time: time to maturity in years
-	:return: The gamma of the underlying
+	:return: The gamma of the option
 	'''
 	d1 = getd1(spot, strike, div, rate, vol, time)
 	return np.exp(-div*time)*sp.norm.pdf(d1)/(spot*vol*np.sqrt(time))
